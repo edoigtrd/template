@@ -19,6 +19,8 @@ OPTIONS :
 
     path : print the path of the template folder
 
+    update : check if template is up to date and update it if needed
+
 CREDITS :
     This program was written by Edouard Seemann github.com/edoigtrd 
     This poject is created to help epitech student to get their first commit on github

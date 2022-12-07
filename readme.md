@@ -7,6 +7,13 @@ With template you can create and load templates.
 ---
 # Usage
 
+## Update template manager :
+```bash
+template update
+```
+this will check for updates and update it if a new version is available.
+Note : this command requires git to be used.
+
 ## list templates :
 
 To list all templates run:

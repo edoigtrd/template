@@ -17,6 +17,32 @@ def name_to_dir(name) :
             r += "_"
     return r
 
+def check_for_update() :
+    # check if git is installed
+    if os.system("git --version") != 0:
+        print("Git is not installed")
+        return False
+    script_path = os.path.dirname(os.path.realpath(__file__))
+    # get working directory
+    wd = os.getcwd()
+    # move to script directory
+    os.chdir(script_path)
+    # check local last commit hash
+    local_hash = os.popen("git rev-parse HEAD").read().strip()
+    # check remote last commit hash "git ls-remote https://github.com/edoigtrd/template.git HEAD | cut -f1"
+    remote_hash = os.popen("git ls-remote https://github.com/edoigtrd/template.git HEAD | cut -f1").read().strip()
+    # move back to working directory
+    os.chdir(wd)
+    # if local hash is different from remote hash, update
+    if local_hash != remote_hash:
+        print("Updating...")
+        os.system("git pull")
+        print("Updated")
+        return True
+    else :
+        print("Already up to date")
+        return False
+
 
 if __name__ == "__main__":
     argv = sys.argv
@@ -27,6 +53,11 @@ if __name__ == "__main__":
     if not os.path.exists(script_path+"/templates.json"):
         # if it doesn't, create it
         open(script_path+"/templates.json", "w").write("[]")
+
+    # check if templates directory exists
+    if not os.path.exists(script_path+"/templates"):
+        # if it doesn't, create it
+        os.mkdir(script_path+"/templates")
 
     # if no arguments are passed, show help
     if len(argv) == 0:
@@ -190,6 +221,8 @@ if __name__ == "__main__":
     elif argv[0] == "path":
         # print path to templates directory
         print(script_path+"/templates")
+    elif argv[0] == "update":
+        check_for_update()
     else:
         print("Unknown command")
         print("use `template help` for help")
