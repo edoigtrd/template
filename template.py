@@ -19,7 +19,7 @@ def name_to_dir(name) :
 
 def check_for_update() :
     # check if git is installed
-    if os.system("git --version") != 0:
+    if os.system("git --version &> /dev/null") != 0:
         print("Git is not installed")
         return False
     script_path = os.path.dirname(os.path.realpath(__file__))
