@@ -3,6 +3,20 @@ import os
 import sys
 import json
 
+# convert name to directory name
+def name_to_dir(name) :
+    name = name.lower()
+    r = ""
+    for c in name :
+        # check if character is a letter or a number
+        if c.isalpha() or c.isdigit() :
+            r += c
+        # if it's not, replace it with a underscore
+        else :
+            r += "_"
+    return r
+
+
 if __name__ == "__main__":
     argv = sys.argv
     argv.pop(0)
@@ -56,9 +70,11 @@ if __name__ == "__main__":
         # ask user for template name, description, directory and after command
         p_name = input("Template name: ")
         p_desc = input("Template description: ")
-        p_dir = input("Template directory: ")
-        p_after = input("After command: ")
-
+        p_dir = input(f"Template directory (leave blank for default ({name_to_dir(p_name)})): ")
+        p_after = input("After command (leave blank for none): ")
+        # if directory is empty, use name as directory
+        if p_dir == "":
+            p_dir = name_to_dir(p_name)
         # check if template with same name already exists
         for t in d:
             if t["name"] == p_name:
@@ -68,6 +84,13 @@ if __name__ == "__main__":
                     d.remove(t)
                 else:
                     exit(0)
+        # check if template with same directory already exists
+        for t in d:
+            if t["dir"] == p_dir:
+                # if it does, ask user if he wants to overwrite it
+                print("Template with same directory already exists, arborting")
+                print(f"Please choose another directory or remove template {t['name']}")
+                exit(1)
         # add template to templates.json
         d.append({
             "name": p_name,
