@@ -46,6 +46,9 @@ note that template name is specified in the template configuration file while cr
 ---
 
 # Installation
+
+## Manual
+
 1. clone the repo <br>
     `git clone https://github.com/edoigtrd/template.git`
 
@@ -60,3 +63,10 @@ note that template name is specified in the template configuration file while cr
 
 5. make path modifications permanent by adding the above line to your .bashrc or .zshrc file <br>
     `echo "export PATH=$PATH:$(pwd)/bin" >> ~/.bashrc`
+
+## Automatic
+
+Simply run the following command in your terminal:
+```bash
+curl -s https://raw.githubusercontent.com/edoigtrd/template/master/install.sh | bash
+```
