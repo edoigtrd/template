@@ -1,0 +1,14 @@
+HOW TO INSTALL
+
+1. clone the repo
+
+2. cd into the repo
+
+3. make sure bin/template is executable
+    chmod +x bin/template
+
+4. add /bin to your path
+    export PATH=$PATH:$(pwd)/bin
+
+5. make path modifications permanent by adding the above line to your .bashrc or .zshrc file
+    echo "export PATH=$PATH:$(pwd)/bin" >> ~/.bashrc

@@ -1,0 +1,25 @@
+USAGE :
+    template [OPTIONS]
+
+    template is a command line template manager
+    You can create your own template and import them in your project
+
+OPTIONS :
+    help : print this help
+
+    load <template name> : load a template in the current directory
+
+    create : open the template creator tool
+
+    list : list all templates
+
+    remove <template name> : remove a template
+
+    edit <template name> : edit a template
+
+    path : print the path of the template folder
+
+CREDITS :
+    This program was written by Edouard Seemann github.com/edoigtrd 
+    This poject is created to help epitech student to get their first commit on github
+    https://www.github.com/edoigtrd/template
