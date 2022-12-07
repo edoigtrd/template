@@ -36,7 +36,7 @@ def check_for_update() :
     # if local hash is different from remote hash, update
     if local_hash != remote_hash:
         print("Updating...")
-        os.system("git pull")
+        os.system(f"git -C {script_path} pull")
         print("Updated")
         return True
     else :
