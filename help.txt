@@ -5,6 +5,8 @@ USAGE :
     You can create your own template and import them in your project
 
 OPTIONS :
+    manager-update : check if template is up to date and update it if needed
+
     help : print this help
 
     load <template name> : load a template in the current directory
@@ -19,7 +21,8 @@ OPTIONS :
 
     path : print the path of the template folder
 
-    update : check if template is up to date and update it if needed
+    update <template name> : update a template with working directory
+
 
 CREDITS :
     This program was written by Edouard Seemann github.com/edoigtrd 

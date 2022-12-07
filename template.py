@@ -216,6 +216,23 @@ if __name__ == "__main__":
         # print path to templates directory
         print(script_path+"/templates")
     elif argv[0] == "update":
+        if len(argv) == 1:
+            # if no template name is passed, print error and exit
+            print("Missing argument: template name")
+            exit(1)
+        # load templates.json
+        d = json.loads(open(script_path+"/templates.json").read())
+        # search directory of template with name argv[1]
+        for t in d:
+            if t["name"] == argv[1]:
+                # remove template directory
+                os.system(f"rm -rf \"{script_path}/templates/{t['dir']}\"")
+                # if it is found, copy current directory to template directory
+                os.system(f"cp -r \"{wd}/.\" \"{script_path}/templates/{t['dir']}\"")
+                print(f"Template {argv[1]} updated")
+                exit(0)
+        print(f"Template {argv[1]} not found, cannot update")
+    elif argv[0] == "manager-update":
         check_for_update()
     else:
         print("Unknown command")

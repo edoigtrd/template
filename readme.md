@@ -9,7 +9,7 @@ With template you can create and load templates.
 
 ## Update template manager :
 ```bash
-template update
+template manager-update
 ```
 this will check for updates and update it if a new version is available.
 Note : this command requires git to be used.
@@ -49,6 +49,13 @@ template remove <template name>
 ```
 this will delete the template from the template directory.
 note that template name is specified in the template configuration file while creating the template.
+
+## Update template files :
+To update the template files run:
+```bash
+template update <template name>
+```
+this will change the template files to files in the current directory.
 
 ---
 
