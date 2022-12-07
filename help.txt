@@ -5,7 +5,7 @@ USAGE :
     You can create your own template and import them in your project
 
 OPTIONS :
-    manager-update : check if template is up to date and update it if needed
+    manager-update : check if template manager is up to date and update it if needed
 
     help : print this help
 
