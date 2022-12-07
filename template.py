@@ -23,16 +23,10 @@ def check_for_update() :
         print("Git is not installed")
         return False
     script_path = os.path.dirname(os.path.realpath(__file__))
-    # get working directory
-    wd = os.getcwd()
-    # move to script directory
-    os.chdir(script_path)
     # check local last commit hash
-    local_hash = os.popen("git rev-parse HEAD").read().strip()
+    local_hash = os.popen(f"git -C \"{script_path}\" rev-parse HEAD").read().strip()
     # check remote last commit hash "git ls-remote https://github.com/edoigtrd/template.git HEAD | cut -f1"
     remote_hash = os.popen("git ls-remote https://github.com/edoigtrd/template.git HEAD | cut -f1").read().strip()
-    # move back to working directory
-    os.chdir(wd)
     # if local hash is different from remote hash, update
     if local_hash != remote_hash:
         print("Updating...")
