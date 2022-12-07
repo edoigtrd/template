@@ -2,6 +2,7 @@
 import os
 import sys
 import json
+import re
 
 # convert name to directory name
 def name_to_dir(name) :
@@ -9,7 +10,7 @@ def name_to_dir(name) :
     r = ""
     for c in name :
         # check if character is a letter or a number
-        if c.isalpha() or c.isdigit() :
+        if re.match("[a-z0-9]", c):
             r += c
         # if it's not, replace it with a underscore
         else :
