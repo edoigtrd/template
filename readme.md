@@ -11,7 +11,7 @@ With template you can create and load templates.
 ```bash
 template manager-update
 ```
-this will check for updates and update it if a new version is available.
+this will check for updates and update it if a new version is available.<br>
 Note : this command requires git to be used.
 
 ## list templates :
@@ -38,8 +38,15 @@ Go to the directory you want to load the template to and run:
 ```bash
 template load <template name>
 ```
-this will load the template to the current directory.
-note that template name is specified in the template configuration file while creating the template.
+this will load the template to the current directory. <br>
+Note: that template name is specified in the template configuration file while creating the template.
+
+## Get template info :
+To get info about a template run:
+```bash
+template info <template name>
+```
+this will show you the template configuration and ressources tree.<br>
 
 ## Remove template :
     
@@ -47,8 +54,8 @@ To delete a template run:
 ```bash
 template remove <template name>
 ```
-this will delete the template from the template directory.
-note that template name is specified in the template configuration file while creating the template.
+this will delete the template from the template directory.<br>
+Note: that template name is specified in the template configuration file while creating the template.
 
 ## Update template files :
 To update the template files run:
@@ -76,7 +83,7 @@ this will change the template files to files in the current directory.
     `export PATH=$PATH:$(pwd)/bin`
 
 5. make path modifications permanent by adding the above line to your .bashrc or .zshrc file <br>
-    `echo "export PATH=$PATH:$(pwd)/bin" >> ~/.bashrc`
+    `echo "export PATH=\$PATH:$(pwd)/bin" >> ~/.bashrc`
 
 ## Automatic
 

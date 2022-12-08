@@ -37,6 +37,19 @@ def check_for_update() :
         print("Already up to date")
         return False
 
+def tree(directory) :
+    # print directory tree
+    for root, dirs, files in os.walk(directory) :
+        # check if file is in a hidden directory
+        if "/." in root:
+            continue
+        level = root.replace(directory, "").count(os.sep)
+        indent = " " * 4 * (level)
+        print(f"{indent}{os.path.basename(root)}/")
+        subindent = " " * 4 * (level + 1)
+        for f in files :
+            print(f"{subindent}{f}")
+    
 
 if __name__ == "__main__":
     argv = sys.argv
@@ -234,6 +247,25 @@ if __name__ == "__main__":
         print(f"Template {argv[1]} not found, cannot update")
     elif argv[0] == "manager-update":
         check_for_update()
+    elif argv[0] == "info":
+        if len(argv) == 1:
+            # if no template name is passed, print error and exit
+            print("Missing argument: template name")
+            exit(1)
+        # load templates.json
+        d = json.loads(open(script_path+"/templates.json").read())
+        # search for template with name argv[1]
+        for t in d:
+            if t["name"] == argv[1]:
+                # if it is found, print template info
+                print(f"Name: {t['name']}")
+                print(f"Description: {t['description']}")
+                print(f"Directory: {t['dir']}")
+                print(f"Template path: {script_path}/templates/{t['dir']}")
+                print(f"After command: {t['after']}")
+                print("="*os.get_terminal_size().columns)
+                tree(script_path+"/templates/"+t["dir"])
+                exit(0)
     else:
         print("Unknown command")
         print("use `template help` for help")

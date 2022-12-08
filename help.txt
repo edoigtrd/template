@@ -23,6 +23,8 @@ OPTIONS :
 
     update <template name> : update a template with working directory
 
+    info <template name> : print the info of a template
+
 
 CREDITS :
     This program was written by Edouard Seemann github.com/edoigtrd 
