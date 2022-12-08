@@ -29,6 +29,10 @@ def check_for_update() :
     remote_hash = os.popen("git ls-remote https://github.com/edoigtrd/template.git HEAD | cut -f1").read().strip()
     # if local hash is different from remote hash, update
     if local_hash != remote_hash:
+        # ask user if he wants to update
+        if input("New version available. Update? [y/N] ").lower() != "y":
+            print("arborting...")
+            return False
         print("Updating...")
         os.system(f"git -C \"{script_path}\" pull")
         print("Updated")
@@ -245,7 +249,7 @@ if __name__ == "__main__":
                 print(f"Template {argv[1]} updated")
                 exit(0)
         print(f"Template {argv[1]} not found, cannot update")
-    elif argv[0] == "manager-update":
+    elif argv[0] in ["manager-update", "manager-upgrade","update-manager", "upgrade-manager"]:
         check_for_update()
     elif argv[0] == "info":
         if len(argv) == 1:
