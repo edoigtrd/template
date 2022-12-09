@@ -44,9 +44,6 @@ def check_for_update() :
 def tree(directory) :
     # print directory tree
     for root, dirs, files in os.walk(directory) :
-        # check if file is in a hidden directory
-        if "/." in root:
-            continue
         level = root.replace(directory, "").count(os.sep)
         indent = " " * 4 * (level)
         print(f"{indent}{os.path.basename(root)}/")
@@ -144,8 +141,16 @@ if __name__ == "__main__":
         open(script_path+"/templates.json", "w").write(json.dumps(d, indent=4))
         # create template directory
         os.system(f"mkdir \"{script_path}/templates/{p_dir}\"")
-        # copy current directory to template directory
+        # copy current directory to template directory (without hidden folders)
         os.system(f"cp -r \"{wd}/.\" \"{script_path}/templates/{p_dir}\"")
+        # check if template directory have hidden folders using (find . -name ".*" -not -name ".")
+        os.system(f"find \"{script_path}/templates/{p_dir}\" -name \".*\" -not -name \".\" > /tmp/{hex(hash(p_dir))}")
+        if len(open(f"/tmp/{hex(hash(p_dir))}","r").readlines())  > 0:
+            # if it does, ask user if he wants to delete them
+            print("Hidden folders found")
+            if input("Delete? [Y/n] ").lower() != "n":
+                # if he wants to delete them, delete them
+                os.system(f"find \"{script_path}/templates/{p_dir}\" -name \".*\" -not -name \".\" -exec rm -rf {{}} \; 2> /dev/null")
         print(f"Template {p_name} created")
 
     elif argv[0] == "remove":
