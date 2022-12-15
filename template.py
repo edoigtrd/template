@@ -31,7 +31,7 @@ def check_for_update() :
     if local_hash != remote_hash:
         # ask user if he wants to update
         if input("New version available. Update? [y/N] ").lower() != "y":
-            print("arborting...")
+            print("aborting...")
             return False
         print("Updating...")
         os.system(f"git -C \"{script_path}\" pull")
@@ -128,7 +128,7 @@ if __name__ == "__main__":
         for t in d:
             if t["dir"] == p_dir:
                 # if it does, ask user if he wants to overwrite it
-                print("Template with same directory already exists, arborting")
+                print("Template with same directory already exists, aborting")
                 print(f"Please choose another directory or remove template {t['name']}")
                 exit(1)
         # add template to templates.json
