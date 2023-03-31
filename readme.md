@@ -79,11 +79,8 @@ this will change the template files to files in the current directory.
 3. make sure bin/template is executable <br>
     `chmod +x bin/template`
 
-4. add /bin to your path <br>
-    `export PATH=$PATH:$(pwd)/bin`
-
-5. make path modifications permanent by adding the above line to your .bashrc or .zshrc file <br>
-    `echo "export PATH=\$PATH:$(pwd)/bin" >> ~/.bashrc`
+4. add template bin to /usr/bin
+    sudo ln -s "$(pwd)/bin/template" /usr/bin
 
 ## Automatic
 
