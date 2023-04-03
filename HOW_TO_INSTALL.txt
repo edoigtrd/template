@@ -10,5 +10,7 @@ HOW TO INSTALL
     chmod +x bin/template
 
 4. add template bin to /usr/bin
-    sudo ln -s "$(pwd)/bin/template" /usr/bin
+    sudo ln -s "$(pwd)/bin/template" /usr/bin -f
 
+5. Add execution perimssion to the symlink
+    sudo chmod +x /usr/bin/template

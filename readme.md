@@ -2,7 +2,7 @@
 
 Template is a CLI template manager.
 
-With template you can create and load templates.
+With template you can easily manage templates.
 
 ---
 # Usage
@@ -29,7 +29,7 @@ creating a template is easy, just go to the directory you want to create a templ
 ```bash
 template create
 ```
-this will open a prompt asking you for template configuration, after you are done, the template will be created.
+this will open a prompt asking you for template configuration, once you have done, the template will be created.
 
 
 ## Load template :
@@ -79,8 +79,11 @@ this will change the template files to files in the current directory.
 3. make sure bin/template is executable <br>
     `chmod +x bin/template`
 
-4. add template bin to /usr/bin
-    sudo ln -s "$(pwd)/bin/template" /usr/bin
+4. add template bin to /usr/bin <br>
+    `sudo ln -s "$(pwd)/bin/template" /usr/bin -f`
+
+5. Add execution perimssion to the symlink <br>
+    `sudo chmod +x /usr/bin/template`
 
 ## Automatic
 

@@ -28,5 +28,5 @@ OPTIONS :
 
 CREDITS :
     This program was written by Edouard Seemann github.com/edoigtrd 
-    This poject is created to help epitech student to get their first commit on github
+    This poject was initially created in order to help Epitech student quickly initialize their git repository for new projects
     https://www.github.com/edoigtrd/template
